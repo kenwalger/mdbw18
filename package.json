@@ -1,0 +1,28 @@
+{
+  "name": "getting-mean",
+  "version": "0.0.1",
+  "description": "Zero to Hero with Node.js and MongoDB",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrlynn/getting-mean.git"
+  },
+  "keywords": [
+    "Node.js",
+    "Tutorial",
+    "MEAN",
+    "MongoDB"
+  ],
+  "author": "Michael Lynn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrlynn/getting-mean/issues"
+  },
+  "homepage": "https://github.com/mrlynn/getting-mean#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
