@@ -26,7 +26,7 @@ your quest to becoming a hero.
 To clone the repository, you'll execute something similar to the following command:
 
 ```
-$ git clone git@github.com:mrlynn/getting-mean.git
+$ git clone git@github.com:kenwalger/mdbw18.git
 ```
 
 This will copy all of the files from the repository to your local development environment into a directory (folder) 
@@ -44,6 +44,7 @@ Once there, you'll see a directory structure similar to the following:
 │   ├── atlas-cluster-video.png
 │   ├── header.png
 │   └── hero_sw.jpg
+│   └── Leafie_motorcycle.png
 ├── package-lock.json
 ├── package.json
 ├── server-app.js

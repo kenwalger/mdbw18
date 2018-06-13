@@ -4,53 +4,47 @@
 ## Quest 7: Creating and Reading data using the Native MongoDB Driver
 With our database populated, let's head back to our `routes.js` and update them to perform some CRUD operations.
 
-First off, we need to wrap our routes with our database connection. Then perform the necessary CRUD operations in 
-association with the HTTP operations.
+
 
 ```javascript
 const express = require('express');
 const router = express.Router();
 
-/* ================================ */
-// MongoDB Configuration
-/* ================================ */
-let MongoClient = require('mongodb').MongoClient;
-let co = require('co');
+const db = require('../data/db').db;
+let delis = db.collection('delis');
 
-const dbName = 'mdbw18';
-const mdbPort = 27017;
-const url = 'mongodb://localhost:' + mdbPort + '/' + dbName;
+/* ====================================== */
+// Route Definitions
+/* ====================================== */
 
-co(function*() {
-	let db = yield MongoClient.connect(url, function (err, client) {
-		if (err) throw err;
-		console.log("Successfully connected to MongoDB on port: " + mdbPort);
-		let db = client.db(dbName);
-		let delis = db.collection('delis');
-		
-        /* ================================ */
-        // Route Configuration
-        /* ================================ */	
-        
-        router.get('/', (request, response, next) => {
-        	console.log("You made it to the router. Nice work!");
-        	response.send("API Index");
-        });
-        
-        router.get('/delis', (request, response) => {
-        	delis.find().toArray(function(err, results) {
-        		response.send(results);
-        	});
-        });
-        
-        router.post('/delis', (request, response) => {
-        	delis.insertOne(request.body, (err, result) => {
-        		if (err) return console.log(err)
-        		response.send("Here's the data that was saved: " + JSON.stringify(request.body));
-        	});
-        });
-	});
+// GET Routes
+router.get('/', (request, response, next) => {
+    console.log("You made it to the router. Nice work!");
+    response.send("API index");
 });
+
+router.get('/delis', (request, response, next) => {
+    console.log("You're on the quest for heros.");
+
+    delis.find().toArray(function(err, results) {
+        response.send(results);
+    });
+});
+
+// POST Routes
+router.post('/delis/', (request, response) => {
+    delis.insertOne(request.body, (err, result) => {
+        if (err) return console.log(err)
+        response.send("Here's the data that was saved: " + JSON.stringify(request.body));
+    });
+});
+
+// PUT routes
+
+// DELETE routes
+
+// Export Router for use in app.js
+module.exports = router;
 
 ```
 
@@ -71,6 +65,31 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 ```
 
+We also need to get our database connection in our `app.js`. 
+
+```javascript {.line-numbers}
+const db = require('./api/data/db');
+const data = require('./api/data/delis');
+
+db.connect().then(function(db){
+            const deliRoutes = require('./api/routes/delis');
+
+            app.use('/', deliRoutes);
+
+            app.use((request, response, next) => {
+                response.status(200).json({
+                    message: "You're becoming a hero!"
+                });
+            });
+
+            // Start the web server
+            app.listen(port, () => {
+                console.log('Express.js server is listening on Port %s.', port);
+            });
+
+});
+```
+
 I'll use the Postman app for testing the API here to send a POST request with a new deli:
 
 rest_id = 7
@@ -80,6 +99,9 @@ name = Katz's Delicatessen
 ## Weapons, Tools and Resources
 Postman for testing APIs: [Download](https://www.getpostman.com/apps)
 body-parser middleware: [npm Site] (https://www.npmjs.com/package/body-parser)
++ Note: in Express version 4, body-parser is included in the Express package. *But* it was there in v2.x as well, but 
+**not** in 3.x, so... yeah. You'll see it used as `bodyParser.urlencoded` and `express.urlencoded` depending on coding
+style.
 
 ## Concepts
 

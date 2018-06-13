@@ -9,32 +9,41 @@ to our MongoDB database. The basic steps to connect with the database are:
 + Pass in the url to connect to. In our case it will be `localhost` with the default port of `27017`.
 + Select the database to which to connect to. 
 
-In the `api/data` folder, let's create a new file called `db.js`.
+In the `api/data` folder, let's create a new file called `db_populate.js.js`.
 
 ```javascript {.line-numbers}
 let MongoClient = require('mongodb').MongoClient;
-let co = require('co');  // For async processing
-let assert = require('assert');
-let data = require('./delis');
+
 
 const dbName = 'mdbw18';
 const mdbPort = 27017;
 const url = 'mongodb://localhost:' + mdbPort + '/' + dbName;
 
-// Create an async generator function
-co(function*() {
-	let db = yield MongoClient.connect(url, function (err, client) {
-		if (err) throw err;
-		console.log("Successfully connected to MongoDB Server on Port %s.", mdbPort);
-	}).catch(function (err) {
-        console.log(err.stack);
-        process.exit(1);
-       });
-});
+class Connection {
+    constructor(uri, name) {
+        this.db = null;
+        this.uri = uri;
+        this.name = name;
+    }
+
+    connect() {
+        if(this.db) {
+            return Promise.resolve(this.db);
+        } else {
+            return MongoClient.connect(this.uri)
+                .then(client => {
+                    this.db = client.db(this.name);
+                    return this.db;
+                });
+        }
+    }
+}
+
+module.exports = new Connection(url, dbName);
 ```
 
 With a successful connection in place, next up is to put data **in** so we can get data **out** of the database. Hmmm, 
-this sounds like a *CRUD*dy job. We'll need to do these CRUD operations inside our MongoDB connection... 
+this sounds like a *CRUD*dy job. We'll need to do these CRUD operations inside a MongoDB connection... 
 
 ```javascript {.line-numbers}
     let db = client.db(dbName);
@@ -51,7 +60,7 @@ this sounds like a *CRUD*dy job. We'll need to do these CRUD operations inside o
         });
 ```
 
-Now from the terminal we can run `node api/data/db.js` to populate our database.
+Now from the terminal we can run `node api/data/db_populate.js` to populate our database.
 
 ## Weapons, Tools and Resources
 

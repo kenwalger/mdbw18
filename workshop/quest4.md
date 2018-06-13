@@ -19,7 +19,7 @@ These roughly translate to the 4 basic actions associated with a data-driven app
 
 * Create (POST)
 * Read (GET)
-* Update (PATCH)
+* Update (PATCH or PUT)
 * Delete (DELETE)
 
 We use these methods every time we use a web browser.  When we browse to a site, we're typically sending a GET request.  
@@ -38,8 +38,8 @@ To do this, let's create a new directory (folder) in our tree under the main fol
 mkdir -p api/routes
 ```
 
-Next, let's create a file to store our routing logic in `./api/routes/quests.js`.  This file, as you can probably 
-decipher from its name will hold routes for requests having to do with our quests.
+Next, let's create a file to store our routing logic in `./api/routes/delis.js`.  This file, as you can probably 
+decipher from its name will hold routes for requests having to do with our quest for a great deli.
 
 Here's a beginning example of the routes file:
 
@@ -47,8 +47,11 @@ Here's a beginning example of the routes file:
 const express = require('express');
 const router = express.Router();
 
-// Route definitions
+/* ====================================== */
+// Route Definitions
+/* ====================================== */
 
+// GET routes
 router.get('/', (req, res, next) => {
     console.log("You made it to the router. Nice work!");
     res.send("API index");
@@ -59,6 +62,13 @@ router.get('/delis',(req, res, next) => {
     res.send("Quests index");
 });
 
+// POST routes
+
+// PUT routes
+
+// DELETE routes
+
+// Export Router for use in app.js
 module.exports = router;
 ```
 
