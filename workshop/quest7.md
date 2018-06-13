@@ -34,7 +34,7 @@ router.get('/delis', (request, response, next) => {
 // POST Routes
 router.post('/delis/', (request, response) => {
     delis.insertOne(request.body, (err, result) => {
-        if (err) return console.log(err)
+        if (err) return console.log(err);
         response.send("Here's the data that was saved: " + JSON.stringify(request.body));
     });
 });
@@ -48,10 +48,10 @@ module.exports = router;
 
 ```
 
-We also need some middleware to parse our responses. We can do that in `app.js` after we install it with `npm`
+We can use some middleware to parse our responses. We can do that in `app.js` after we install it with `npm`
 
 ```
-npm install body-parser
+npm install --save body-parser
 ``` 
 
 #### App.js
@@ -97,9 +97,9 @@ name = Katz's Delicatessen
 
 
 ## Weapons, Tools and Resources
-Postman for testing APIs: [Download](https://www.getpostman.com/apps)
-body-parser middleware: [npm Site] (https://www.npmjs.com/package/body-parser)
-+ Note: in Express version 4, body-parser is included in the Express package. *But* it was there in v2.x as well, but 
++ Postman for testing APIs: [Download](https://www.getpostman.com/apps)
++ body-parser middleware: [npm Site] (https://www.npmjs.com/package/body-parser)
+  + Note: in Express version 4, body-parser is included in the Express package. *But* it was there in v2.x as well, but 
 **not** in 3.x, so... yeah. You'll see it used as `bodyParser.urlencoded` and `express.urlencoded` depending on coding
 style.
 

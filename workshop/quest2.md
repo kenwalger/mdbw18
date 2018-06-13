@@ -24,13 +24,13 @@ Next, let's write a very simple Node.js script.  Make sure you're in the root di
 file with the following contents:
 
 ```
-console.log('hello world');
+console.log('Hello MongoDB World 2018!');
 ```
 Now we can test it by running it with the `node` command:
 
 ```
-Michaels-MacBook-Pro-2:getting-mean mlynn$ node helloworld.js
-hello world
+Kens-MacBook-Pro-3:getting-mean kenalger$ node helloworld.js
+Hello MongoDB World 2018!
 ```
 
 You're on your way to becoming a hero.  Jump to [Quest 3](../workshop/quest3.md) if you're up for

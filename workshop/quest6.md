@@ -9,7 +9,13 @@ to our MongoDB database. The basic steps to connect with the database are:
 + Pass in the url to connect to. In our case it will be `localhost` with the default port of `27017`.
 + Select the database to which to connect to. 
 
-In the `api/data` folder, let's create a new file called `db_populate.js.js`.
+Let's add MongoDB to our Node.js project:
+
+```
+npm install --save mongodb
+```
+
+In the `api/data` folder, let's create a new file called `db.js`.
 
 ```javascript {.line-numbers}
 let MongoClient = require('mongodb').MongoClient;
@@ -45,24 +51,33 @@ module.exports = new Connection(url, dbName);
 With a successful connection in place, next up is to put data **in** so we can get data **out** of the database. Hmmm, 
 this sounds like a *CRUD*dy job. We'll need to do these CRUD operations inside a MongoDB connection... 
 
+Let's make a quick `db_populate.js` file that will initalize our MongoDB database with some of our delis.
+
 ```javascript {.line-numbers}
-    let db = client.db(dbName);
-    db.collection('delis').insertMany([
+const db = require('./db.js');
+const data = require('./delis.js);
+
+db.connect().then(function (db) {
+    db.collection('delis')
+        .insertMany([
             data.margon,
             data.juniors,
             data.melt_shop,
             data.piccolo,
-            data.toasties,],
+            data.toasties
+        ],
         function (err, r) {
-            assert.equal(null, err);
-            assert.equal(5, r.insertedCount);
-            console.log("Database setup with five delis.");
+            console.log("Database setup with delis.");
+            process.exit(0);
         });
+});
 ```
 
-Now from the terminal we can run `node api/data/db_populate.js` to populate our database.
+Now from the terminal we can run `node api/data/db_populate.js` to populate our database. And if we look at our
+database in Compass, there's our data. Leafie is feeling very heroic, and so should you!
 
 ## Weapons, Tools and Resources
++ MongoDB [Compass](https://www.mongodb.com/download-center#compass) - A GUI interface for MongoDB exploration
 
 ## Concepts
 

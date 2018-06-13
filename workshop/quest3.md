@@ -37,22 +37,22 @@ that send requests such as GET, and POST requests.  Let's build on this example 
 looks like.
 
 ```javascript {.line-numbers}
-const http = require('http')
+const http = require('http');
 const port = process.env.PORT || 3000;
 
 const requestHandler = (request, response) => {
-  console.log(request.url)
-  response.end('Hello Node.js Server!')
-}
+  console.log(request.url);
+  response.end('Hello Node.js Server!');
+};
 
-const server = http.createServer(requestHandler)
+const server = http.createServer(requestHandler);
 
 server.listen(port, (err) => {
   if (err) {
-    return console.log('something bad happened', err)
+    return console.log('something bad happened', err);
   }
 
-  console.log(`server is listening on ${port}`)
+  console.log(`server is listening on %s`, port);
 })
 ```
 
@@ -84,8 +84,8 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use((req, res, next) => {
-    res.status(200).json({
+app.use((request, response, next) => {
+    response.status(200).json({
         message: "You're becoming a hero!"
     });
 });
@@ -94,6 +94,12 @@ app.use((req, res, next) => {
 app.listen(port, ()=> {
     console.log('Express.js server is listening on Port %s.', port);
 });
+```
+
+We can now run our Node.js project and have an Express.js server running. Great work!
+
+```
+npm start
 ```
 
 ## Weapons, Tools and Resources

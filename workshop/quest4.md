@@ -52,14 +52,14 @@ const router = express.Router();
 /* ====================================== */
 
 // GET routes
-router.get('/', (req, res, next) => {
+router.get('/', (request, response, next) => {
     console.log("You made it to the router. Nice work!");
-    res.send("API index");
+    response.send("API index");
 });
 
-router.get('/delis',(req, res, next) => {
+router.get('/delis',(request, response, next) => {
     console.log("You're on the quest for heros.");
-    res.send("Quests index");
+    response.send("Delis index");
 });
 
 // POST routes
@@ -86,7 +86,12 @@ Next we need to tell our app to use the routes:
 app.use('/', deliRoutes);
 ```
 
+Once you get tired of stopping and restarting your application after every change, you'll appreciate the heroic tool,
+Nodemon.
 
+```
+npm install --save-dev nodemon
+```
 
 ---
 

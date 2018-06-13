@@ -3,7 +3,7 @@
 ## An Introduction to API-Centered Application Development with Node.js and MongoDB
 ## Quest 8: Mongoose - Object Data Modeling
 
-Great work getting here! You're a MongoDB with Node.js hero. And Leafie can access and add to his NYC deli database.
+Great work getting here! You're a *MongoDB with Node.js* hero. And Leafie can access and add to his NYC deli database.
 That's super exciting!
 
 Let's take our API even further. With the basic knowledge of routes and how to connect to MongoDB in Node.js, we'll look 
@@ -15,12 +15,12 @@ Recall that starting a new Node.js project can be done with:
 ```
 npm init
 ```
-
-An extremely common tool when working with a Node.js, Express, and MongoDB project is to use
+We can copy the dependencies from the `package.json` in our original project into this one to save some time.
+Another extremely common tool when working with a Node.js, Express, and MongoDB project is to use
 the Mongoose ORM package.
 
 ```
-npm install mongoose
+npm install --save mongoose
 ```
 
 Let's start with our model inside a `models` subfolder. Mongoose allows us to define a schema to follow.

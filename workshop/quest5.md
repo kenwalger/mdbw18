@@ -4,7 +4,7 @@
 ## Quest 5: Defining the data for our application
 ![Leafie on Motorcycle](../images/Leafie_motorcycle.png "Leafie on Motorcycle")  
 Our hero, Leafie, is on the quest for a great Hero sandwich here in New York. Let's provide him with some options for 
-places to eat. Let's define some restaurants in a `data.js` file:
+places to eat. Let's define some restaurants in a `data/delis.js` file:
 
 ```javascript {.line-numbers}
 module.exports = {
