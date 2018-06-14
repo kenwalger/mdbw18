@@ -55,7 +55,7 @@ Let's make a quick `db_populate.js` file that will initalize our MongoDB databas
 
 ```javascript {.line-numbers}
 const db = require('./db.js');
-const data = require('./delis.js);
+const data = require('./delis.js');
 
 db.connect().then(function (db) {
     db.collection('delis')
