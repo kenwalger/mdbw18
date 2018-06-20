@@ -101,7 +101,7 @@ exports.findOne = (request, response) => {
 
 // Update deli
 exports.update = (request, response) => {
-    if (!request.body.content) {
+    if (!request.body) {
         return response.status(400).send({
             message: "Hmmm, trying to save an empty deli isn't very heroic."
         });
