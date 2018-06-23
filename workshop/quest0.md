@@ -12,7 +12,7 @@ required in order to move to the next.
 ## Structure
 
 The workshop was created using a series of markdown files delivered via the repository 
-[Getting MEAN](http://github.com/mrlynn/getting-mean) - each is called a `quest`.  Each `quest` will guide you through 
+[Getting MEAN](http://github.com/kenwalger/getting-mean) - each is called a `quest`.  Each `quest` will guide you through 
 the process of several tasks associated with tackling the MEAN Stack.  This repository should be cloned prior to 
 beginning work on the various quests and tasks.  For help on cloning the repository, see 
 [Cloning a Github Repository](https://help.github.com/articles/cloning-a-repository/)
