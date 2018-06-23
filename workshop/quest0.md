@@ -49,9 +49,6 @@ Once there, you'll see a directory structure similar to the following:
 ├── package.json
 ├── server-app.js
 ├── server.js
-├── api
-    └── routes
-        └── quests.js
 └── workshop
     ├── README.md
     ├── quest0.md
@@ -60,6 +57,8 @@ Once there, you'll see a directory structure similar to the following:
     └── quest3.md
     ...
 ```
+
+Along this heroic quest, we'll build a REST API and you can add *your* code to the project.
 
 ## Weapons, Tools and Resources
 
