@@ -12,7 +12,7 @@ This specific quest is going to require that you create a javascript Node.js scr
 
 ### Node.js
 
-Make sure you've got Node.js installed.  Open a command window, or, use the integrated `terminal` within 
+Make sure you've got Node.js installed.  Open a new command window, or, use the integrated `terminal` within 
 your IDE.  Test whether node.js is installed by typing/running:
 
 ```

@@ -34,6 +34,18 @@ for free using [MongoDB Atlas](http://mongodb.com/atlas).
 
 [![Launching your first Atlas Cluster](https://img.youtube.com/vi/_d8CBOtadRA/0.jpg)](https://www.youtube.com/watch?v=_d8CBOtadRA "Launching your first Atlas cluster")
 
+#### Start the MongoDB Server
+
+Before we get too far along our journey, let's get our newly installed MongoDB Server running. From a terminal window,
+we can get our server started with the following command:
+
+```
+mongod
+```
+
+Once it is up and running and waiting for connections on the default port of 27017, we can minimize that terminal window
+and continue on our quest.
+
 ### Node.js
 
 Here's the abbreviated guide, highlighting the major steps:
