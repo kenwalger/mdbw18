@@ -38,7 +38,7 @@ const deliSchema = mongoose.Schema({
     postal_code: Number,
     specialty: String
 
-}, {collection: 'nyc_delis'});
+}, {collection: 'delis'});
 
 module.exports = mongoose.model('Deli', deliSchema);
 ```
