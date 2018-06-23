@@ -51,7 +51,7 @@ module.exports = new Connection(url, dbName);
 With a successful connection in place, next up is to put data **in** so we can get data **out** of the database. Hmmm, 
 this sounds like a *CRUD*dy job. We'll need to do these CRUD operations inside a MongoDB connection... 
 
-Let's make a quick `db_populate.js` file that will initalize our MongoDB database with some of our delis.
+Let's make a quick `db_populate.js` file that will initialize our MongoDB database with some of our delis.
 
 ```javascript {.line-numbers}
 const db = require('./db.js');
