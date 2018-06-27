@@ -101,6 +101,16 @@ We can now run our Node.js project and have an Express.js server running. Great 
 ```
 npm start
 ```
+Make sure in your `package.json` file under the *start* script your `app.js` is there!
+
+```json
+{"scripts":
+    "start": "node app.js",
+    "tests": ...null
+    }
+
+```
+
 
 ## Weapons, Tools and Resources
 
